@@ -76,10 +76,10 @@ const htmlify = brick =>
 const alphabets =
 [
   {
-    id: `muhÁlim`,
+    id: `nuhAlin`,
     vowels: `ieéaáoóu`,
-    consonants: `fvszxjgkdtbphymnrl`,
-    complete: `ieéaáoóufvszxjgkdtbphymnrl`,
+    consonants: `bpdtgkfvszxjhylrnm`,
+    complete: `ieéaáoóubpdtgkfvszxjhylrnm`,
   },
   {
     id: `english`,
