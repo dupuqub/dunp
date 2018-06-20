@@ -1,5 +1,6 @@
 
-html {background: #000}
+html, body {width: 100%; height: 100%}
+html {background: #000; color: #FFF}
 body {margin: 0}
 
 .center

@@ -9,6 +9,14 @@ const table = item => console.table (item)
 const get = query => document.querySelector (query)
 const getAll = query => document.querySelectorAll (query)
 
+const styler = item => `${item [0]}: ${item [1]}`
+const attributer = item => ` ${item [0]}="${item [1]}"`
+
+const newArray = length => Array.from ({length})
+const validArray = array => typeOf (array) === `array` && array.length > 0
+
+const write = text => ({at: box => get (box).innerHTML = text})
+
 //......................................................................................................................
 
 const sum = (a, b) => a + b
@@ -16,12 +24,6 @@ const combo = (a, b) => a && b
 const concat = link => (a, b) => a + link + b
 const random = (min, max) => Math.random () * (max - min) + min
 const roll = (min, max) => Math.floor (random (min, max + 1))
-
-const createArray = length => Array.from ({length})
-const validArray = array => typeOf (array) === `array` && array.length > 0
-
-const styler = item => `${item [0]}: ${item [1]}`
-const attributer = item => ` ${item [0]}="${item [1]}"`
 
 //......................................................................................................................
 
@@ -51,7 +53,7 @@ const typeOf = item =>
 const htmlify = brick =>
 {
   if (typeOf (brick) === `array`) return !validArray (brick) ? `` : brick.map (htmlify).reduce (sum)
-  if (!typeOf (brick) === `object`) return brick
+  if (typeOf (brick) !== `object`) return brick
 
   const type = brick.type || `div`
   const id = !brick.id ? `` : ` id="${brick.id}"`
