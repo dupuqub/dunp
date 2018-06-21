@@ -98,7 +98,7 @@ const ratio = (item, box) =>
 
 //......................................................................................................................
 
-const reroot = stage =>
+const reroot = stage => // MODIFIER
 {
   const {w, h, u} = stage
 
@@ -118,6 +118,42 @@ const reroot = stage =>
       return true
     }
   })
+}
+
+//......................................................................................................................
+
+const startScene = id => // MODIFIER
+{
+  //....................................................................................................................
+  // step 0 . resize the stage to fit the new scene and store its values
+
+  const scene = scenes [id] ()
+  const oldStage = scene.stage
+  const body = size (get (`body`))
+  const space = {w: body.width, h: body.height}
+  const newStage = ratio (oldStage, space)
+
+  info.fluid.stage = newStage
+
+  reroot (newStage)
+
+  //....................................................................................................................
+  // step 1 . render the scene into stage
+
+  const brick = bricks.scenes [id] ()
+  const text = html (brick)
+  const stage = get (`#stage`)
+
+  write (text).at (stage)
+
+  //....................................................................................................................
+  // step 2 . end last scene and begin the new scene
+
+  loops.sceneExit ()
+
+  scene.begin ()
+  loops.sceneLoop = scene.loop
+  loops.sceneExit = scene.exit
 }
 
 //......................................................................................................................
