@@ -18,7 +18,7 @@ const styler = item => `${item [0]}: ${item [1]}`
 const attributer = item => ` ${item [0]}="${item [1]}"`
 
 const size = item => item.getBoundingClientRect ()
-const write = text => ({at: box => get (box).innerHTML = text})
+const write = text => ({at: box => box.innerHTML = text})
 
 //......................................................................................................................
 
@@ -87,7 +87,7 @@ const ratio = (box, space) =>
   const h = !box.ratio ? box.h : !vertical ? space.h : scale.w * box.h
   const u = !box.ratio ? 1 : (w + h) / 3000
 
-  // "UNIT = (WIDTH + HEIGHT) / 3000"
+  // UNIT = (WIDTH + HEIGHT) / 3000
   // this is because the focus here is a 1080p screen (1920px by 1080px)
   // in such a screen the value of a unit would be 1 because 1920 + 1080 = 3000
 
@@ -105,7 +105,7 @@ const reroot = stage =>
   .some (sheet =>
   {
     if (sheet.href !== null
-    && sheet.href.indexOf (`css/root.css`) !== -1)
+    && sheet.href.indexOf (`/root.css`) !== -1)
     {
       sheet.cssRules [0].style.cssText =
 
