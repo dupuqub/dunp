@@ -83,9 +83,9 @@ const ratio = (box, space) =>
   const scale = {w: space.w / box.w, h: space.h / box.h}
   const vertical = scale.w < scale.h
 
-  const w = vertical ? space.w : scale.h * box.w
-  const h = !vertical ? space.h : scale.w * box.h
-  const u = (w + h) / 3000
+  const w = !box.ratio ? box.w : vertical ? space.w : scale.h * box.w
+  const h = !box.ratio ? box.h : !vertical ? space.h : scale.w * box.h
+  const u = !box.ratio ? 1 : (w + h) / 3000
 
   // "UNIT = (WIDTH + HEIGHT) / 3000"
   // this is because the focus here is a 1080p screen (1920px by 1080px)
@@ -100,7 +100,9 @@ const reroot = stage =>
 {
   const {w, h, u} = stage
 
-  const rooter = sheet =>
+  Array
+  .from (document.styleSheets)
+  .some (sheet =>
   {
     if (sheet.href !== null
     && sheet.href.indexOf (`css/root.css`) !== -1)
@@ -113,11 +115,7 @@ const reroot = stage =>
 
       return true
     }
-  }
-
-  Array
-  .from (document.styleSheets)
-  .some (rooter)
+  })
 }
 
 //......................................................................................................................
@@ -137,4 +135,6 @@ const alphabets =
     complete: `abcdefghijklmnopqrstuvwxyz`,
   },
 ]
+
+//......................................................................................................................
 
