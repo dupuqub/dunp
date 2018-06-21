@@ -18,6 +18,7 @@ const styler = item => `${item [0]}: ${item [1]}`
 const attributer = item => ` ${item [0]}="${item [1]}"`
 
 const size = item => item.getBoundingClientRect ()
+const frame = funktion => window.requestAnimationFrame (funktion)
 const write = text => ({at: box => box.innerHTML = text})
 
 //......................................................................................................................
@@ -78,20 +79,21 @@ const html = brick =>
 
 //......................................................................................................................
 
-const ratio = (box, space) =>
+const ratio = (item, box) =>
 {
-  const scale = {w: space.w / box.w, h: space.h / box.h}
+  const scale = {w: box.w / item.w, h: box.h / item.h}
   const vertical = scale.w < scale.h
 
-  const w = !box.ratio ? box.w : vertical ? space.w : scale.h * box.w
-  const h = !box.ratio ? box.h : !vertical ? space.h : scale.w * box.h
-  const u = !box.ratio ? 1 : (w + h) / 3000
+  const w = !item.ratio ? item.w : vertical ? box.w : scale.h * item.w
+  const h = !item.ratio ? item.h : !vertical ? box.h : scale.w * item.h
+  const u = !item.ratio ? 1 : (w + h) / 3000
+  const type = w > h ? `landscape` : w < h ? `portrait` : `square`
 
   // UNIT = (WIDTH + HEIGHT) / 3000
   // this is because the focus here is a 1080p screen (1920px by 1080px)
   // in such a screen the value of a unit would be 1 because 1920 + 1080 = 3000
 
-  return {w, h, u}
+  return {w, h, u, type}
 }
 
 //......................................................................................................................
