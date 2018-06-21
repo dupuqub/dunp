@@ -103,7 +103,7 @@ const reroot = stage =>
   const rooter = sheet =>
   {
     if (sheet.href !== null
-    && sheet.href.indexOf (`dunp/index.css`) !== -1)
+    && sheet.href.indexOf (`css/root.css`) !== -1)
     {
       sheet.cssRules [0].style.cssText =
 
