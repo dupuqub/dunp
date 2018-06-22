@@ -3,43 +3,51 @@
 
 //......................................................................................................................
 
-const log = item => console.log (item)
-const table = item => console.table (item)
-
-const newArray = length => Array.from ({length})
-const validArray = array => typeOf (array) === `array` && array.length > 0
+const log = a => console.log (a)
+const table = a => console.table (a)
 
 //......................................................................................................................
 
-const get = query => document.querySelector (query)
-const getAll = query => document.querySelectorAll (query)
-const getSize = query => get (query).getBoundingClientRect ()
-const requestFrame = funktion => window.requestAnimationFrame (funktion)
-
-const styler = item => `${item [0]}: ${item [1]}`
-const attributer = item => ` ${item [0]}="${item [1]}"`
+const dunp = {}
 
 //......................................................................................................................
 
-const sum = (a, b) => a + b
-const combo = (a, b) => a && b
-const concat = link => (a, b) => a + link + b
-const random = (min, max) => Math.random () * (max - min) + min
-const roll = (min, max) => Math.floor (random (min, max + 1))
+dunp.array = {}
+dunp.array.new = length => Array.from ({length})
+dunp.array.valid = array => typeOf (array) === `array` && array.length > 0
+dunp.array.styler = array => `${array [0]}: ${array [1]}`
+dunp.array.attributer = array => ` ${array [0]}="${array [1]}"`
 
 //......................................................................................................................
 
-const title = string =>
+dunp.sum = (a, b) => a + b
+dunp.combo = (a, b) => a && b
+dunp.concat = link => (a, b) => a + link + b
+dunp.random = (min, max) => Math.random () * (max - min) + min
+dunp.roll = (min, max) => Math.floor (dunp.random (min, max + 1))
+
+//......................................................................................................................
+
+dunp.get = query => document.querySelector (query)
+dunp.getAll = query => document.querySelectorAll (query)
+dunp.getSize = query => dunp.get (query).getBoundingClientRect ()
+dunp.frame = funktion => window.requestAnimationFrame (funktion)
+
+//......................................................................................................................
+
+dunp.lower = string => string.toLowerCase ()
+dunp.upper = string => string.toUpperCase ()
+dunp.title = string =>
 (
   Array
   .from (string)
-  .map ((char, index) => index ? char : char.toUpperCase ())
-  .reduce (sum, ``)
+  .map ((char, index) => index ? char : dunp.upper (char))
+  .reduce (dunp.sum, ``)
 )
 
 //......................................................................................................................
 
-const typeOf = item =>
+dunp.typeOf = item =>
 (
     isNaN (item) && typeof item === `number`
   ? `NaN`
@@ -52,20 +60,23 @@ const typeOf = item =>
 
 //......................................................................................................................
 
-const htmlify = brick =>
+dunp.htmlify = brick =>
 {
+  const {typeOf, htmlify, array, sum, concat} = dunp
+  const {valid, attributer, styler} = array
+
   if (typeOf (brick) === `function`) return htmlify (brick ())
-  if (typeOf (brick) === `array`) return !validArray (brick) ? `` : brick.map (htmlify).reduce (sum)
+  if (typeOf (brick) === `array`) return !valid (brick) ? `` : brick.map (htmlify).reduce (sum)
   if (typeOf (brick) !== `object`) return brick
 
   const type = brick.type || `div`
   const id = !brick.id ? `` : ` id="${brick.id}"`
-  const classes = !validArray (brick.classes) ? `` : ` class="${brick.classes.reduce (concat (` `))}"`
-  const others = !validArray (brick.others) ? `` : brick.others.map (attributer).reduce (sum)
-  const style = !validArray (brick.style) ? `` : ` style="${brick.style.map (styler).reduce (concat (`; `))}"`
+  const classes = !valid (brick.classes) ? `` : ` class="${brick.classes.reduce (concat (` `))}"`
+  const others = !valid (brick.others) ? `` : brick.others.map (attributer).reduce (sum)
+  const style = !valid (brick.style) ? `` : ` style="${brick.style.map (styler).reduce (concat (`; `))}"`
   const inner =
 
-      validArray (brick.inner)
+      valid (brick.inner)
     ? brick.inner.map (htmlify).reduce (sum)
     : typeOf (brick.inner) === `object`
     ? htmlify (brick.inner)
@@ -78,7 +89,7 @@ const htmlify = brick =>
 
 //......................................................................................................................
 
-const aspectRatio = (options, space) =>
+dunp.aspectRatio = (options, space) =>
 {
   const scale = {w: space.w / options.w, h: space.h / options.h}
   const vertical = scale.w < scale.h
@@ -97,7 +108,7 @@ const aspectRatio = (options, space) =>
 
 //......................................................................................................................
 
-const reroot = stage => // MODIFIER
+dunp.reroot = stage => // MODIFIER
 {
   const {w, h, u} = stage
 
@@ -106,7 +117,7 @@ const reroot = stage => // MODIFIER
   .some (sheet =>
   {
     if (sheet.href !== null
-    && sheet.href.indexOf (`/root.css`) !== -1)
+    && sheet.href.indexOf (`/dunp.css`) !== -1)
     {
       sheet.cssRules [0].style.cssText =
 
@@ -121,11 +132,12 @@ const reroot = stage => // MODIFIER
 
 //......................................................................................................................
 
-const changeScene = (id, saveScene, saveStage) => // MODIFIER
+dunp.changeScene = (id, saveScene, saveStage) => // MODIFIER
 {
   //....................................................................................................................
   // step 0 . resize stage to fit new scene and store its values
 
+  const {get, getSize, aspectRatio, reroot, htmlify} = dunp
   const scene = scenes [id] ()
   const options = scene.stageOptions
   const bodySize = getSize (`body`)
@@ -152,16 +164,16 @@ const changeScene = (id, saveScene, saveStage) => // MODIFIER
   //....................................................................................................................
   // step 2 . exit current scene and enter new scene
 
-  loops.currentScene.exit ()
+  project.loops.currentScene.exit ()
   scene.enter ()
 
-  loops.currentScene.exit = scene.exit
-  loops.currentScene.loop = scene.loop
+  project.loops.currentScene.exit = scene.exit
+  project.loops.currentScene.loop = scene.loop
 }
 
 //......................................................................................................................
 
-const alphabets =
+dunp.alphabets =
 [
   {
     id: `nuhAlin`,
