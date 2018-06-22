@@ -169,8 +169,8 @@ dunp.changeScene = (id, saveScene, saveStage) => // MODIFIER
   currentScene.exit ()
   newScene.enter ()
 
-  project.loops.currentScene.exit = scene.exit
-  project.loops.currentScene.loop = scene.loop
+  project.loops.currentScene.exit = newScene.exit
+  project.loops.currentScene.loop = newScene.loop
 }
 
 //......................................................................................................................
