@@ -154,11 +154,11 @@ dunp.changeScene = (id, saveScene, saveStage) => // MODIFIER
 
   // store values
 
-  states.temp.fluid.scene = id
-  states.temp.fluid.stage = newStageInfo
+  project.states.temp.fluid.scene = id
+  project.states.temp.fluid.stage = newStageInfo
 
-  if (saveScene) states.safe.fluid.scene = id
-  if (saveStage) states.safe.fluid.stage = newStageInfo
+  if (saveScene) project.states.safe.fluid.scene = id
+  if (saveStage) project.states.safe.fluid.stage = newStageInfo
 
   // render scene into stage
 
