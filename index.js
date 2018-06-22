@@ -31,7 +31,7 @@ dunp.roll = (min, max) => Math.floor (dunp.random (min, max + 1))
 dunp.get = query => document.querySelector (query)
 dunp.getAll = query => document.querySelectorAll (query)
 dunp.getSize = query => dunp.get (query).getBoundingClientRect ()
-dunp.frame = funktion => window.requestAnimationFrame (funktion)
+dunp.requestFrame = funktion => window.requestAnimationFrame (funktion)
 
 //......................................................................................................................
 
