@@ -126,8 +126,8 @@ const changeScene = id => // MODIFIER
   //....................................................................................................................
   // step 0 . resize the stage to fit the new scene and store its values
 
-  const builtScene = scenes [id] ()
-  const oldStage = builtScene.stage
+  const scene = scenes [id] ()
+  const oldStage = scene.stage
   const body = getSize (`body`)
   const space = {w: body.width, h: body.height}
   const newStage = aspectRatio (oldStage, space)
