@@ -121,7 +121,7 @@ const reroot = stage => // MODIFIER
 
 //......................................................................................................................
 
-const changeScene = id => // MODIFIER
+const changeScene = (id, saveScene, saveStage) => // MODIFIER
 {
   //....................................................................................................................
   // step 0 . resize stage to fit new scene and store its values
@@ -132,8 +132,11 @@ const changeScene = id => // MODIFIER
   const space = {w: bodySize.width, h: bodySize.height}
   const newStageInfo = aspectRatio (options, space)
 
-  info.fluid.scene = id
-  info.fluid.stage = newStageInfo
+  states.temp.fluid.scene = id
+  states.temp.fluid.stage = newStageInfo
+
+  if (saveScene) states.safe.fluid.scene = id
+  if (saveStage) states.safe.fluid.stage = newStageInfo
 
   reroot (newStageInfo)
 
