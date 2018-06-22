@@ -13,12 +13,11 @@ const validArray = array => typeOf (array) === `array` && array.length > 0
 
 const get = query => document.querySelector (query)
 const getAll = query => document.querySelectorAll (query)
+const getSize = query => get (query).getBoundingClientRect ()
+const requestFrame = funktion => window.requestAnimationFrame (funktion)
 
 const styler = item => `${item [0]}: ${item [1]}`
 const attributer = item => ` ${item [0]}="${item [1]}"`
-
-const size = item => item.getBoundingClientRect ()
-const frame = funktion => window.requestAnimationFrame (funktion)
 
 //......................................................................................................................
 
@@ -53,9 +52,10 @@ const typeOf = item =>
 
 //......................................................................................................................
 
-const html = brick =>
+const htmlify = brick =>
 {
-  if (typeOf (brick) === `array`) return !validArray (brick) ? `` : brick.map (html).reduce (sum)
+  if (typeOf (brick) === `function`) htmlify (brick ())
+  if (typeOf (brick) === `array`) return !validArray (brick) ? `` : brick.map (htmlify).reduce (sum)
   if (typeOf (brick) !== `object`) return brick
 
   const type = brick.type || `div`
@@ -66,9 +66,9 @@ const html = brick =>
   const inner =
 
       validArray (brick.inner)
-    ? brick.inner.map (html).reduce (sum)
+    ? brick.inner.map (htmlify).reduce (sum)
     : typeOf (brick.inner) === `object`
-    ? html (brick.inner)
+    ? htmlify (brick.inner)
     : brick.inner
     ? brick.inner
     : ``
@@ -78,7 +78,7 @@ const html = brick =>
 
 //......................................................................................................................
 
-const ratio = (item, box) =>
+const aspectRatio = (item, box) =>
 {
   const scale = {w: box.w / item.w, h: box.h / item.h}
   const vertical = scale.w < scale.h
@@ -126,9 +126,9 @@ const changeScene = id => // MODIFIER
   //....................................................................................................................
   // step 0 . resize the stage to fit the new scene and store its values
 
-  const scene = scenes [id] ()
-  const oldStage = scene.stage
-  const body = size (get (`body`))
+  const builtScene = scenes [id] ()
+  const oldStage = builtScene.stage
+  const body = getSize (`body`)
   const space = {w: body.width, h: body.height}
   const newStage = ratio (oldStage, space)
 
@@ -139,9 +139,9 @@ const changeScene = id => // MODIFIER
   //....................................................................................................................
   // step 1 . render the scene into stage
 
-  const brick = bricks.scenes [id] ()
-  const text = html (brick)
   const stage = get (`#stage`)
+  const brick = bricks.scenes [id]
+  const text = htmlify (brick)
 
   stage.innerHTML = text
 
@@ -151,8 +151,8 @@ const changeScene = id => // MODIFIER
   loops.scene.exit ()
   scene.begin ()
 
-  loops.scene.loop = scene.loop
   loops.scene.exit = scene.exit
+  loops.scene.loop = scene.loop
 }
 
 //......................................................................................................................
