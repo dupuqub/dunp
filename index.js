@@ -54,7 +54,7 @@ const typeOf = item =>
 
 const htmlify = brick =>
 {
-  if (typeOf (brick) === `function`) htmlify (brick ())
+  if (typeOf (brick) === `function`) return htmlify (brick ())
   if (typeOf (brick) === `array`) return !validArray (brick) ? `` : brick.map (htmlify).reduce (sum)
   if (typeOf (brick) !== `object`) return brick
 
