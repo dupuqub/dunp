@@ -130,7 +130,7 @@ const changeScene = id => // MODIFIER
   const oldStage = builtScene.stage
   const body = getSize (`body`)
   const space = {w: body.width, h: body.height}
-  const newStage = ratio (oldStage, space)
+  const newStage = aspectRatio (oldStage, space)
 
   info.fluid.stage = newStage
 
