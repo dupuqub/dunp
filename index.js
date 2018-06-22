@@ -78,14 +78,14 @@ const htmlify = brick =>
 
 //......................................................................................................................
 
-const aspectRatio = (item, box) =>
+const aspectRatio = (options, space) =>
 {
-  const scale = {w: box.w / item.w, h: box.h / item.h}
+  const scale = {w: space.w / options.w, h: space.h / options.h}
   const vertical = scale.w < scale.h
 
-  const w = !item.ratio ? item.w : vertical ? box.w : scale.h * item.w
-  const h = !item.ratio ? item.h : !vertical ? box.h : scale.w * item.h
-  const u = !item.ratio ? 1 : (w + h) / 3000
+  const w = !options.ratio ? options.w : vertical ? space.w : scale.h * options.w
+  const h = !options.ratio ? options.h : !vertical ? space.h : scale.w * options.h
+  const u = !options.ratio ? 1 : (w + h) / 3000
   const type = w > h ? `landscape` : w < h ? `portrait` : `square`
 
   // UNIT = (WIDTH + HEIGHT) / 3000
@@ -127,14 +127,14 @@ const changeScene = id => // MODIFIER
   // step 0 . resize stage to fit new scene and store its values
 
   const scene = scenes [id] ()
-  const stageSize = scene.stage
-  const body = getSize (`body`)
-  const space = {w: body.width, h: body.height}
-  const newStage = aspectRatio (stageSize, space)
+  const options = scene.stageOptions
+  const bodySize = getSize (`body`)
+  const space = {w: bodySize.width, h: bodySize.height}
+  const newStageInfo = aspectRatio (options, space)
 
-  info.fluid.stage = newStage
+  info.fluid.stage = newStageInfo
 
-  reroot (newStage)
+  reroot (newStageInfo)
 
   //....................................................................................................................
   // step 1 . render scene into stage
