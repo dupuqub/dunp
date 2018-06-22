@@ -19,7 +19,6 @@ const attributer = item => ` ${item [0]}="${item [1]}"`
 
 const size = item => item.getBoundingClientRect ()
 const frame = funktion => window.requestAnimationFrame (funktion)
-const write = text => ({at: box => box.innerHTML = text})
 
 //......................................................................................................................
 
@@ -122,7 +121,7 @@ const reroot = stage => // MODIFIER
 
 //......................................................................................................................
 
-const startScene = id => // MODIFIER
+const changeScene = id => // MODIFIER
 {
   //....................................................................................................................
   // step 0 . resize the stage to fit the new scene and store its values
@@ -144,16 +143,16 @@ const startScene = id => // MODIFIER
   const text = html (brick)
   const stage = get (`#stage`)
 
-  write (text).at (stage)
+  stage.innerHTML = text
 
   //....................................................................................................................
   // step 2 . end last scene and begin the new scene
 
-  loops.sceneExit ()
-
+  loops.scene.exit ()
   scene.begin ()
-  loops.sceneLoop = scene.loop
-  loops.sceneExit = scene.exit
+
+  loops.scene.loop = scene.loop
+  loops.scene.exit = scene.exit
 }
 
 //......................................................................................................................
