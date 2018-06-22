@@ -62,7 +62,7 @@ dunp.typeOf = item =>
 
 dunp.htmlify = brick =>
 {
-  const {typeOf, htmlify, array, sum, concat} = dunp
+  const {typeOf, htmlify, sum, concat, array} = dunp
   const {valid, attributer, styler} = array
 
   if (typeOf (brick) === `function`) return htmlify (brick ())
@@ -134,15 +134,25 @@ dunp.reroot = stage => // MODIFIER
 
 dunp.changeScene = (id, saveScene, saveStage) => // MODIFIER
 {
-  //....................................................................................................................
-  // step 0 . resize stage to fit new scene and store its values
-
   const {get, getSize, aspectRatio, reroot, htmlify} = dunp
-  const scene = scenes [id] ()
-  const options = scene.stageOptions
+  const {scenes, bricks, loops} = project
+  const {currentScene} = loops
+
+  const newScene = scenes [id] ()
+  const options = newScene.stageOptions
   const bodySize = getSize (`body`)
   const space = {w: bodySize.width, h: bodySize.height}
   const newStageInfo = aspectRatio (options, space)
+
+  const stage = get (`#stage`)
+  const brick = bricks.scenes [id]
+  const text = htmlify (brick)
+
+  // resize stage to fit the new scene
+
+  reroot (newStageInfo)
+
+  // store values
 
   states.temp.fluid.scene = id
   states.temp.fluid.stage = newStageInfo
@@ -150,22 +160,14 @@ dunp.changeScene = (id, saveScene, saveStage) => // MODIFIER
   if (saveScene) states.safe.fluid.scene = id
   if (saveStage) states.safe.fluid.stage = newStageInfo
 
-  reroot (newStageInfo)
-
-  //....................................................................................................................
-  // step 1 . render scene into stage
-
-  const stage = get (`#stage`)
-  const brick = bricks.scenes [id]
-  const text = htmlify (brick)
+  // render scene into stage
 
   stage.innerHTML = text
 
-  //....................................................................................................................
-  // step 2 . exit current scene and enter new scene
+  // change scenes and update loops
 
-  project.loops.currentScene.exit ()
-  scene.enter ()
+  currentScene.exit ()
+  newScene.enter ()
 
   project.loops.currentScene.exit = scene.exit
   project.loops.currentScene.loop = scene.loop
