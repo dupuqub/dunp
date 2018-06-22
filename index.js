@@ -132,6 +132,7 @@ const changeScene = id => // MODIFIER
   const space = {w: bodySize.width, h: bodySize.height}
   const newStageInfo = aspectRatio (options, space)
 
+  info.fluid.scene = id
   info.fluid.stage = newStageInfo
 
   reroot (newStageInfo)
