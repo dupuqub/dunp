@@ -9,18 +9,20 @@
 
 project.bricks.model = () =>
 ({
-  id: ``,
+  id: `brickModel`,
   type: `canvas`,
   classes: [`center`, `column`],
   styles:
   [
-    [``, ``],
-    [``, ``],
+    [`border`, `calc(var(--u) * 3) solid #FFF`],
+    [`background`, `#AAA`],
   ],
   others:
   [
-    [``, ``],
-    [``, ``],
+    [`width`, `600`],
+    [`height`, `400`],
+    [`onclick`, event => {log (event)}],
+    [`onmouseover`, event => {log (event)}],
   ],
   inner: null // can be anything a brick can be
 })
