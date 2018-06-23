@@ -17,12 +17,12 @@ project.bricks.model = () => // only an example
     [`border`, `calc(var(--u) * 3) solid #FFF`],
     [`background`, `#AAA`],
   ],
-  others:
+  extras:
   [
     [`width`, `600`],
     [`height`, `400`],
-    [`onclick`, event => {log (event)}],
-    [`onmouseover`, event => {log (event)}],
+    [`onclick`, `event => {log (event)}`],
+    [`onmouseover`, `event => {log (event)}`],
   ],
   inner: null // can be anything a brick can be
 })
