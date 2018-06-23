@@ -21,8 +21,8 @@ project.bricks.model = () => // only an example
   [
     [`width`, `600`],
     [`height`, `400`],
-    [`onclick`, `event => {log (event)}`],
-    [`onmouseover`, `event => {log (event)}`],
+    [`onclick`, `log (\`clicked\`)`],
+    [`onmouseover`, `log (\`hovered\`)`],
   ],
   inner: null // can be anything a brick can be
 })
