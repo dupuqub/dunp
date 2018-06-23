@@ -7,7 +7,7 @@
 // if it is an array, every member may be anything a brick can be
 // functions will return, so watch out for those pesky undefineds
 
-project.bricks.model = () =>
+project.bricks.model = () => // only an example
 ({
   id: `brickModel`,
   type: `canvas`,
