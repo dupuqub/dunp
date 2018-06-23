@@ -14,8 +14,8 @@ project.bricks.scenes.main = () => // only an example
   ],
   inner:
   [
-    project.bricks.mainButton (`new`, `log (\`new clicked\`)`),
-    project.bricks.mainButton (`load`, `log (\`load clicked\`)`),
-    project.bricks.mainButton (`options`, `log (\`options clicked\`)`),
+    project.bricks.mainButton (`new`, "log (`new clicked`)"),
+    project.bricks.mainButton (`load`, "log (`load clicked`)"),
+    project.bricks.mainButton (`options`, "log (`options clicked`)"),
   ],
 })
