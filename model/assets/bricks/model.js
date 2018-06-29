@@ -10,7 +10,7 @@
 //
 // If the brick is an array, every member may be anything a brick can be.
 //
-// Functions will return, so watch out for those pesky `undefined`.
+// Functions will return, so watch out for those pesky "undefined".
 //
 // Styles defined here overpower any definition in any CSS file.
 //
