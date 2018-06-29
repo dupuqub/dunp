@@ -2,8 +2,8 @@
 `use strict`
 
 //......................................................................................................................
-// SAFE = information that PERSISTS through sessions
-// FLUID = information that may CHANGE
+// "safe" is information that PERSISTS through sessions.
+// "fluid" is information that CHANGES.
 
 project.states.safe.fluid =
 {

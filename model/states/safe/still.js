@@ -2,8 +2,8 @@
 `use strict`
 
 //......................................................................................................................
-// SAFE = information that PERSISTS through sessions
-// STILL = information that does NOT change
+// "safe" is information that PERSISTS through sessions.
+// "still" is information that CANNOT CHANGE.
 
 project.states.safe.still =
 {

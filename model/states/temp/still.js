@@ -2,8 +2,8 @@
 `use strict`
 
 //......................................................................................................................
-// TEMP = information that does NOT persist through sessions
-// STILL = information that does NOT change
+// "temp" is information that CANNOT PERSIST through sessions.
+// "still" is information that CANNOT CHANGE.
 
 project.states.temp.still =
 {

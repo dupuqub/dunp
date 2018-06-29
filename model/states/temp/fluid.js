@@ -2,8 +2,8 @@
 `use strict`
 
 //......................................................................................................................
-// TEMP = information that does NOT persist through sessions
-// FLUID = information that may CHANGE
+// "temp" is information that CANNOT PERSIST through sessions.
+// "fluid" is information that CHANGES.
 
 project.states.temp.fluid =
 {

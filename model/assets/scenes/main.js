@@ -3,12 +3,15 @@
 
 //......................................................................................................................
 
-project.scenes.main = () =>
+project.scenes.main = () => // Only an example.
 ({
   //....................................................................................................................
 
   stageOptions:
   {
+    // "ratio === true" means "w" and "h" will be proportions to the whole screen.
+    // "ratio === false" means "w" and "h" will be pixel units.
+
     ratio: true,
     w: 16,
     h: 9,

@@ -2,12 +2,16 @@
 `use strict`
 
 //......................................................................................................................
-// a brick may be a NaN, null, undefined, string, number, boolean, array, function or object
-// if a brick is an object it must follow the structure in the example below (the object the function is returning)
-// if it is an array, every member may be anything a brick can be
-// functions will return, so watch out for those pesky undefineds
+// A brick may be a NaN, null, undefined, string, number, boolean, array, function or object.
+// If a brick is an object it must follow the structure in the example below (the object the function is returning).
+// If it is an array, every member may be anything a brick can be.
+// Functions will return, so watch out for those pesky undefineds.
+// Styles defined here overpower any definition in any CSS file.
 
-project.bricks.model = () => // only an example
+// Obs.: "calc(var())" is not on-pattern like "calc (var ())" because most standard text-editors syntax highlighting
+// don't recognize the spaces in between. It would run normally, but is written this way to preserve the CSS pattern.
+
+project.bricks.model = () => // Only an example.
 ({
   id: `brickModel`,
   type: `canvas`,
@@ -24,6 +28,6 @@ project.bricks.model = () => // only an example
     [`onclick`, "log (`clicked`)"],
     [`onmouseover`, "log (`hovered`)"],
   ],
-  inner: null // can be anything a brick can be
+  inner: null // Can be anything a brick can be.
 })
 

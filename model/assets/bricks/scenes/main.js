@@ -3,7 +3,7 @@
 
 //......................................................................................................................
 
-project.bricks.scenes.main = () => // only an example
+project.bricks.scenes.main = () => // Only an example.
 ({
   classes: [`center`, `column`],
   style:

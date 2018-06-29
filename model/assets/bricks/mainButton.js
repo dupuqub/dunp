@@ -3,7 +3,7 @@
 
 //......................................................................................................................
 
-project.bricks.mainButton = (id, funktion) => // only an example
+project.bricks.mainButton = (id, funktion) => // Only an example.
 ({
   id: `button${dunp.title (id)}`,
   classes: [`center`, `mainButton`],
