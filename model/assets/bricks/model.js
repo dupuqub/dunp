@@ -3,7 +3,7 @@
 
 //......................................................................................................................
 // A brick may be a NaN, null, undefined, string, number, boolean, array, function or object.
-// If a brick is an object it must follow the structure in the example below (the object the function is returning).
+// If a brick is an object it must follow the structure in the example below (the object returned by the function).
 // If it is an array, every member may be anything a brick can be.
 // Functions will return, so watch out for those pesky undefineds.
 // Styles defined here overpower any definition in any CSS file.
