@@ -16,6 +16,8 @@
 //
 // "calc(var())" is not on-pattern like "calc (var ())" because most standard text-editors syntax highlighting
 // don't recognize the spaces in between. It would run normally, but is written this way to preserve the CSS pattern.
+//
+// functions at extras are inside double quotes (") so code inside may be within the JS pattern
 
 project.bricks.model = () => // Only an example.
 ({
