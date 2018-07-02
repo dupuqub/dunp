@@ -19,3 +19,4 @@ project.bricks.scenes.main = () => // Only an example.
     project.bricks.mainButton (`options`, "log (`options clicked`)"),
   ],
 })
+
