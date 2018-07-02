@@ -164,10 +164,6 @@ dunp.changeScene = (id, saveScene, saveStage) => // MODIFIER
 
   stage.innerHTML = text
 
-  // colorize
-
-  stage.style.background = options.background
-
   // change scenes and update loops
 
   currentScene.exit ()
