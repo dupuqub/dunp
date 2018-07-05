@@ -5,15 +5,15 @@
 
 const project =
 {
-  scenes: {},
   bricks:
   {
     scenes: {},
   },
   states:
   {
-    temp: {},
     safe: {},
+    temp: {},
   },
+  scenes: {},
 }
 
