@@ -30,7 +30,7 @@ dunp.roll = (min, max) => Math.floor (dunp.random (min, max + 1))
 
 dunp.get = query => document.querySelector (query)
 dunp.getAll = query => document.querySelectorAll (query)
-dunp.getSize = query => dunp.get (query).getBoundingClientRect ()
+dunp.getBounds = query => dunp.get (query).getBoundingClientRect ()
 dunp.requestFrame = funktion => window.requestAnimationFrame (funktion)
 
 //......................................................................................................................
@@ -134,19 +134,27 @@ dunp.reroot = stage => // MODIFIER
 
 dunp.changeScene = (id, saveScene, saveStage) => // MODIFIER
 {
-  const {get, getSize, aspectRatio, reroot, htmlify} = dunp
+  // set actors
+  const {get, getBounds, aspectRatio, reroot, htmlify} = dunp
   const {scenes, bricks, loops} = project
   const {currentScene} = loops
-
   const newScene = scenes [id] ()
-  const options = newScene.stageOptions
-  const bodySize = getSize (`body`)
-  const space = {w: bodySize.width, h: bodySize.height}
-  const newStageInfo = aspectRatio (options, space)
 
-  const stage = get (`#stage`)
-  const brick = bricks.scenes [id]
-  const text = htmlify (brick)
+  // "before ()" works before the project mutates
+  newScene.before ()
+
+  // exit the current scene
+  currentScene.exit ()
+
+  // update loops
+  project.loops.currentScene.exit = newScene.exit
+  project.loops.currentScene.loop = newScene.loop
+
+  // set actors
+  const {stageOptions} = newScene
+  const bodySize = getBounds (`body`)
+  const space = {w: bodySize.width, h: bodySize.height}
+  const newStageInfo = aspectRatio (stageOptions, space)
 
   // resize stage to fit the new scene
   reroot (newStageInfo)
@@ -159,17 +167,16 @@ dunp.changeScene = (id, saveScene, saveStage) => // MODIFIER
   if (saveScene) project.states.safe.fluid.scene = id
   if (saveStage) project.states.safe.fluid.stage = newStageInfo
 
-  // prepare stage for the new scene
-  currentScene.exit ()
+  // set actors
+  const stage = get (`#stage`)
+  const brick = bricks.scenes [id] ()
+  const text = htmlify (brick)
 
-  // render scene into stage within basic processes
-  newScene.before ()
+  // put the built scene into stage
   stage.innerHTML = text
-  newScene.after ()
 
-  // update loops
-  project.loops.currentScene.exit = newScene.exit
-  project.loops.currentScene.loop = newScene.loop
+  // "after ()" works when the project is already mutated
+  newScene.after ()
 }
 
 //......................................................................................................................
