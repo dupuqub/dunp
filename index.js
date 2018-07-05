@@ -149,26 +149,25 @@ dunp.changeScene = (id, saveScene, saveStage) => // MODIFIER
   const text = htmlify (brick)
 
   // resize stage to fit the new scene
-
   reroot (newStageInfo)
 
-  // store values
-
+  // store values and...
   project.states.temp.fluid.scene = id
   project.states.temp.fluid.stage = newStageInfo
 
+  // make them persist through sessions if needed
   if (saveScene) project.states.safe.fluid.scene = id
   if (saveStage) project.states.safe.fluid.stage = newStageInfo
 
-  // render scene into stage
-
-  stage.innerHTML = text
-
-  // change scenes and update loops
-
+  // prepare stage for the new scene
   currentScene.exit ()
-  newScene.enter ()
 
+  // render scene into stage within basic processes
+  newScene.before ()
+  stage.innerHTML = text
+  newScene.after ()
+
+  // update loops
   project.loops.currentScene.exit = newScene.exit
   project.loops.currentScene.loop = newScene.loop
 }
