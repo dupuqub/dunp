@@ -9,7 +9,7 @@ onresize = unused => dunp.changeScene (project.states.temp.fluid.scene)
 
 project.begin = () =>
 {
-  dunp.changeScene (`main`, false, false)
+  dunp.changeScene (`main`)
 }
 
 //......................................................................................................................
