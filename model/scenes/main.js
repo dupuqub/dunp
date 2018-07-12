@@ -7,6 +7,7 @@ project.scenes.main = () => // Only an example.
 ({
   //....................................................................................................................
 
+  id: `main`,
   stageOptions:
   {
     // "ratio === true" means "w" and "h" will be proportional to the whole screen.
@@ -19,8 +20,9 @@ project.scenes.main = () => // Only an example.
 
   //....................................................................................................................
 
-  before: () => {},
-  after: () => {},
+  beforeOldExit: () => {},
+  beforeBuild: () => {},
+  afterBuild: () => {},
   exit: () => {},
   loop: () => {},
 

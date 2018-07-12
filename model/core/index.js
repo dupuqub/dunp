@@ -3,21 +3,25 @@
 
 //......................................................................................................................
 
-onresize = unused => dunp.changeScene (project.states.temp.fluid.scene)
+const {changeScene, requestFrame} = dunp
+
+//......................................................................................................................
+
+onresize = unused => changeScene (project.states.safe.scene.id)
 
 //......................................................................................................................
 
 project.begin = () =>
 {
-  dunp.changeScene (`main`)
+  changeScene (`main`)
 }
 
 //......................................................................................................................
 
 project.loop = () =>
 {
-  project.loops.currentScene.loop ()
-  dunp.requestFrame (project.loop)
+  project.states.safe.scene.loop ()
+  requestFrame (project.loop)
 }
 
 //......................................................................................................................

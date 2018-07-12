@@ -107,8 +107,9 @@ dunp.aspectRatio = (options, space) =>
 }
 
 //......................................................................................................................
+// MODIFIER PROJECTUAL
 
-dunp.reroot = stage => // MODIFIER
+dunp.reroot = stage =>
 {
   const {w, h, u} = stage
 
@@ -131,6 +132,7 @@ dunp.reroot = stage => // MODIFIER
 }
 
 //......................................................................................................................
+// PROJECTUAL
 
 dunp.getLang = () =>
 {
@@ -141,26 +143,27 @@ dunp.getLang = () =>
 }
 
 //......................................................................................................................
+// MODIFIER PROJECTUAL
 
-dunp.changeScene = (id, saveScene, saveStage) => // MODIFIER
+dunp.changeScene = id =>
 {
-  // set actors
+  //....................................................................................................................
+
   const {get, getBounds, aspectRatio, reroot, htmlify} = dunp
-  const {scenes, bricks, loops} = project
-  const {currentScene} = loops
+  const {scenes, bricks, states} = project
+  const oldScene = states.safe.scene
   const newScene = scenes [id] ()
 
-  // "before ()" works before the project mutates
-  newScene.before ()
+  // make necessary transitions
+  newScene.beforeOldExit ()
+  oldScene.exit ()
+  newScene.beforeBuild ()
 
-  // exit the current scene
-  currentScene.exit ()
+  // store values
+  project.states.safe.scene = newScene
 
-  // update loops
-  project.loops.currentScene.exit = newScene.exit
-  project.loops.currentScene.loop = newScene.loop
+  //....................................................................................................................
 
-  // set actors
   const {stageOptions} = newScene
   const bodySize = getBounds (`body`)
   const space = {w: bodySize.width, h: bodySize.height}
@@ -169,15 +172,11 @@ dunp.changeScene = (id, saveScene, saveStage) => // MODIFIER
   // resize stage to fit the new scene
   reroot (newStageInfo)
 
-  // store values and...
-  project.states.temp.scene = id
+  // store values
   project.states.temp.stage = newStageInfo
 
-  // make them persist through sessions if needed
-  if (saveScene) project.states.safe.scene = id
-  if (saveStage) project.states.safe.stage = newStageInfo
+  //....................................................................................................................
 
-  // set actors
   const stage = get (`#stage`)
   const brick = bricks.scenes [id] ()
   const text = htmlify (brick)
