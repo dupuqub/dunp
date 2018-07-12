@@ -5,12 +5,7 @@
 
 project.states.temp =
 {
-  stage:
-  {
-    w: 0,
-    h: 0,
-    u: 0,
-    type: ``,
-  }
+  scene: {},
+  stage: {},
 }
 

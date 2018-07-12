@@ -6,11 +6,5 @@
 project.states.safe =
 {
   lang: `eng`,
-  scene:
-  {
-    id: ``,
-    loop: () => {},
-    exit: () => {},
-  },
 }
 

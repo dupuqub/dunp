@@ -100,8 +100,8 @@ dunp.aspectRatio = (options, space) =>
   const type = w > h ? `landscape` : w < h ? `portrait` : `square`
 
   // UNIT = (WIDTH + HEIGHT) / 3000
-  // this is because the focus here is a 1080p screen (1920px by 1080px)
-  // in such a screen the value of a unit would be 1 because 1920 + 1080 = 3000
+  // This is because the focus here is a 1080p screen (1920px by 1080px).
+  // In such a screen the value of a unit would be 1 because 1920 + 1080 = 3000.
 
   return {w, h, u, type}
 }
@@ -145,47 +145,43 @@ dunp.getLang = () =>
 //......................................................................................................................
 // MODIFIER PROJECTUAL
 
-dunp.changeScene = id =>
+dunp.changeScene = (id, saveStage, saveScene) =>
 {
-  //....................................................................................................................
-
+  // set actors
   const {get, getBounds, aspectRatio, reroot, htmlify} = dunp
   const {scenes, bricks, states} = project
-  const oldScene = states.safe.scene
+  const oldScene = states.temp.scene
   const newScene = scenes [id] ()
 
-  // make necessary transitions
+  // Make necessary transitions.
   newScene.beforeOldExit ()
   oldScene.exit ()
   newScene.beforeBuild ()
 
-  // store values
-  project.states.safe.scene = newScene
-
-  //....................................................................................................................
-
+  // set actors
   const {stageOptions} = newScene
   const bodySize = getBounds (`body`)
   const space = {w: bodySize.width, h: bodySize.height}
   const newStageInfo = aspectRatio (stageOptions, space)
-
-  // resize stage to fit the new scene
-  reroot (newStageInfo)
-
-  // store values
-  project.states.temp.stage = newStageInfo
-
-  //....................................................................................................................
-
   const stage = get (`#stage`)
   const brick = bricks.scenes [id] ()
   const text = htmlify (brick)
 
-  // put the built scene into stage
+  // Store values.
+  project.states.temp.scene = newScene
+  project.states.temp.stage = newStageInfo
+
+  if (saveScene) project.states.safe.scene = newScene
+  if (saveStage) project.states.safe.stage = newStageInfo
+
+  // Resize stage to fit the new scene.
+  reroot (newStageInfo)
+
+  // Put the built scene into stage.
   stage.innerHTML = text
 
-  // "after ()" works when the project is already mutated
-  newScene.after ()
+  // Finish it.
+  newScene.afterBuild ()
 }
 
 //......................................................................................................................
