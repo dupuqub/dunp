@@ -155,7 +155,7 @@ dunp.changeScene = (id, saveStage, saveScene) =>
 
   // Make necessary transitions.
   newScene.beforeOldExit ()
-  if (oldScene) oldScene.exit ()
+  if (oldScene.exit) oldScene.exit ()
   newScene.beforeBuild ()
 
   // set actors
