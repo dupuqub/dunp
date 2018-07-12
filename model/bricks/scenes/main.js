@@ -2,8 +2,9 @@
 `use strict`
 
 //......................................................................................................................
+// Example.
 
-project.bricks.scenes.main = () => // Only an example.
+project.bricks.scenes.main = () =>
 {
   const lang = dunp.getLang ()
   const brick =
