@@ -9,6 +9,7 @@ const project =
   {
     scenes: {},
   },
+  langs: {},
   states: {},
   scenes: {},
 }
