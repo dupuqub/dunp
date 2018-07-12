@@ -1,6 +1,7 @@
 
 /*....................................................................................................................*/
 /* Works in tandem with "dunp.reroot". */
+/* Mostly useful if the stage's size is relative to a ratio (not pixel-based). */
 
 :root
 {

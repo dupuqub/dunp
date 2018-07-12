@@ -132,6 +132,16 @@ dunp.reroot = stage => // MODIFIER
 
 //......................................................................................................................
 
+dunp.getLang = () =>
+{
+  const langId = project.states.safe.lang
+  const lang = project.langs [langId]
+
+  return lang
+}
+
+//......................................................................................................................
+
 dunp.changeScene = (id, saveScene, saveStage) => // MODIFIER
 {
   // set actors
@@ -160,12 +170,12 @@ dunp.changeScene = (id, saveScene, saveStage) => // MODIFIER
   reroot (newStageInfo)
 
   // store values and...
-  project.states.temp.fluid.scene = id
-  project.states.temp.fluid.stage = newStageInfo
+  project.states.temp.scene = id
+  project.states.temp.stage = newStageInfo
 
   // make them persist through sessions if needed
-  if (saveScene) project.states.safe.fluid.scene = id
-  if (saveStage) project.states.safe.fluid.stage = newStageInfo
+  if (saveScene) project.states.safe.scene = id
+  if (saveStage) project.states.safe.stage = newStageInfo
 
   // set actors
   const stage = get (`#stage`)
