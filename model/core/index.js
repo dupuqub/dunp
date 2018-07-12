@@ -7,7 +7,7 @@ const {changeScene, requestFrame} = dunp
 
 //......................................................................................................................
 
-onresize = unused => changeScene (project.states.safe.scene.id)
+onresize = unused => changeScene (project.states.temp.scene.id)
 
 //......................................................................................................................
 
@@ -20,7 +20,7 @@ project.begin = () =>
 
 project.loop = () =>
 {
-  project.states.safe.scene.loop ()
+  project.states.temp.scene.loop ()
   requestFrame (project.loop)
 }
 
