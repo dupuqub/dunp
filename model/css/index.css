@@ -2,6 +2,15 @@
 /*....................................................................................................................*/
 /* Examples. */
 
-.mainButton {background: #666}
-.mainButton:hover { background: #888}
+.mainButton 
+{
+  color: #CCC;
+  background: #666;
+}
+
+.mainButton:hover
+{
+  color: #EEE;
+  background: #888;
+}
 

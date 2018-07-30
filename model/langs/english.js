@@ -3,8 +3,15 @@
 
 //......................................................................................................................
 
-project.states.safe =
+project.langs.english =
 {
-  lang: `english`,
+  id: `english`,
+  main:
+  {
+    lang: `ENGLISH`,
+    title: `MODEL`,
+    play: `PLAY`,
+    adjust: `ADJUST`,
+  },
 }
 

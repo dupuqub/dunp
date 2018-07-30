@@ -4,18 +4,20 @@
 //......................................................................................................................
 // Example.
 
-project.bricks.mainButton = (id, funktion) =>
+project.bricks.mainButton = (id, inner, funktion) =>
 ({
-  id: `button${dunp.title (id)}`,
+  id: `button${id}`,
   classes: [`center`, `pointer`, `mainButton`],
   extras: [[`onclick`, funktion]],
   style:
   [
-    [`width`, `100%`],
-    [`height`, `5%`],
-    [`font-size`, `calc(var(--u) * 20)`],
-    [`margin-bottom`, `calc(var(--u) * 5)`],
+    [`width`, `13%`],
+    [`height`, `7%`],
+    [`transition`, `all 0.2s`],
+    [`font-size`, `calc(var(--u) * 40)`],
+    [`margin-bottom`, `calc(var(--u) * 10)`],
+    [`border-radius`, `calc(var(--u) * 10)`],
   ],
-  inner: dunp.upper (id),
+  inner,
 })
 

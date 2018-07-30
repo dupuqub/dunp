@@ -41,7 +41,7 @@ dunp.title = string =>
 (
   Array
   .from (string)
-  .map ((char, index) => index ? char : dunp.upper (char))
+  .map ((char, index) => index ? dunp.lower (char) : dunp.upper (char))
   .reduce (dunp.sum, ``)
 )
 
@@ -145,7 +145,7 @@ dunp.getLang = () =>
 //......................................................................................................................
 // MODIFIER PROJECTUAL
 
-dunp.changeScene = (id, saveStage, saveScene) =>
+dunp.changeScene = (id, saveScene, saveStage) =>
 {
   // set actors
   const {get, getBounds, aspectRatio, reroot, htmlify} = dunp

@@ -3,12 +3,15 @@
 
 //......................................................................................................................
 
-project.langs.eng =
+project.langs.portuguese =
 {
+  id: `portuguese`,
   main:
   {
-    play: `PLAY`,
-    settings: `SETTINGS`,
+    lang: `PORTUGUÊS`,
+    title: `MODELO`,
+    play: `JOGAR`,
+    adjust: `AJUSTAR`,
   },
 }
 

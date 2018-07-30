@@ -13,11 +13,6 @@
 // Functions will return, so watch out for those pesky "undefined".
 //
 // Styles defined here overpower any definition in any CSS file. For hover effects you must use CSS.
-//
-// "calc(var())" is not on-pattern like "calc (var ())" because most standard text-editors syntax highlighting
-// don't recognize the spaces in between. It would run normally, but is written this way to preserve the CSS pattern.
-//
-// Functions at "extras" are inside double quotes (") so code inside may be within the JS pattern.
 
 project.bricks.model = () => // Only an example.
 ({
@@ -28,8 +23,8 @@ project.bricks.model = () => // Only an example.
   [
     [`width`, `600`],
     [`height`, `400`],
-    [`onclick`, "log (`clicked`)"],
-    [`onmouseover`, "log (`hovered`)"],
+    [`onclick`, `log (\`clicked\`)`],
+    [`onmouseover`, `log (\`hovered\`)`],
   ],
   style:
   [

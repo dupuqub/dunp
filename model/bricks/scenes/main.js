@@ -15,11 +15,14 @@ project.bricks.scenes.main = () =>
       [`width`, `100%`],
       [`height`, `100%`],
       [`background`, `#444`],
+      [`position`, `relative`],
     ],
     inner:
     [
-      project.bricks.mainButton (lang.main.play, "log (`play clicked`)"),
-      project.bricks.mainButton (lang.main.settings, "log (`settings clicked`)"),
+      project.bricks.mainTitle (lang.main.title),
+      project.bricks.mainButton (`Play`, lang.main.play, `log (\`play clicked\`)`),
+      project.bricks.mainButton (`Adjust`, lang.main.adjust, `log (\`adjust clicked\`)`),
+      project.bricks.mainLang (lang.main.lang),
     ],
   }
 
