@@ -8,7 +8,7 @@
 //
 // Every part of the brick object may not exist, however if the type does not exist, its value will be "`div`".
 //
-// If the brick is an array, every member may be anything a brick can be.
+// If the brick is an array, every index may be anything a brick can be.
 //
 // Functions will return, so watch out for those pesky "undefined".
 //
