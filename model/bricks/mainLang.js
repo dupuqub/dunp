@@ -12,17 +12,22 @@ project.bricks.mainLang = inner =>
   [
     [`onclick`,
     `
-      const allLangs = Object.keys (project.langs)
-      const lang = dunp.getLang ()
-      const langIndex = allLangs.indexOf (lang.id)
+      const allLangs = Object.keys(project.langs)
+      const lang = dunp.getLang()
+      const langIndex = allLangs.indexOf(lang.id)
       const newLang =
 
           langIndex === allLangs.length - 1
-        ? allLangs [0]
-        : allLangs [langIndex + 1]
+        ? allLangs[0]
+        : allLangs[langIndex + 1]
+
+      const sceneId = project.states.temp.scene.id
+      const titleText = project.langs[newLang].main.title
+      const title = dunp.get(\`title\`)
 
       project.states.safe.lang = newLang
-      dunp.changeScene (project.states.temp.scene.id)
+      title.innerHTML = titleText
+      dunp.changeScene(sceneId)
     `],
   ],
   style:

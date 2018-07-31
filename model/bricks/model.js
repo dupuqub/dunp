@@ -23,8 +23,8 @@ project.bricks.model = () => // Only an example.
   [
     [`width`, `600`],
     [`height`, `400`],
-    [`onclick`, `log (\`clicked\`)`],
-    [`onmouseover`, `log (\`hovered\`)`],
+    [`onclick`, `log(\`clicked\`)`],
+    [`onmouseover`, `log(\`hovered\`)`],
   ],
   style:
   [
