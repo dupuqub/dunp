@@ -4,7 +4,7 @@
 //......................................................................................................................
 // A brick may be a NaN, null, undefined, string, number, boolean, array, function or object.
 //
-// If a brick is an object it must follow the structure in the example below (the object returned by the function).
+// If a brick is an object, it must follow the structure in the example below (the object returned by the function).
 //
 // Every part of the brick object may not exist, however if the type does not exist, its value will be "`div`".
 //
