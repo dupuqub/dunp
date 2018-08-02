@@ -187,21 +187,20 @@ dunp.changeScene = (id, saveScene, saveStage) =>
 //......................................................................................................................
 // VISUALIZER
 
-const logMatrix2d = matrix =>
+dunp.logMatrix2d = matrix =>
 {
   let matrixHeader = `   `
   let lines = ``
+  let line = ``
 
   dunp
   .array
   .new(matrix.length)
   .forEach((item, index) => matrixHeader += `${index}.`)
 
-  log(matrixHeader)
-
   matrix[0].forEach((item0, index0) =>
   {
-    let line = ``
+    line = ``
 
     matrix.forEach((item1, index1) =>
     {
@@ -211,6 +210,7 @@ const logMatrix2d = matrix =>
     lines += `${index0}. ${line}\n`
   })
 
+  log(matrixHeader)
   log(lines)
 }
 
