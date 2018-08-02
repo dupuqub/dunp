@@ -185,6 +185,36 @@ dunp.changeScene = (id, saveScene, saveStage) =>
 }
 
 //......................................................................................................................
+// VISUALIZER
+
+const logMatrix2d = matrix =>
+{
+  let matrixHeader = `   `
+  let lines = ``
+
+  dunp
+  .array
+  .new(matrix.length)
+  .forEach((item, index) => matrixHeader += `${index}.`)
+
+  log(matrixHeader)
+
+  matrix[0].forEach((item0, index0) =>
+  {
+    let line = ``
+
+    matrix.forEach((item1, index1) =>
+    {
+      line += `${matrix[index1][index0]} `
+    })
+
+    lines += `${index0}. ${line}\n`
+  })
+
+  log(lines)
+}
+
+//......................................................................................................................
 
 dunp.alphabets =
 [
