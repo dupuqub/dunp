@@ -17,6 +17,19 @@ dunp.array.new = (length, initial) => Array.from({length}).map(() => initial)
 dunp.array.valid = array => dunp.typeOf(array) === `array` && array.length > 0
 dunp.array.styler = array => `${array[0]}: ${array[1]}`
 dunp.array.attributer = array => ` ${array[0]}="${array[1]}"`
+dunp.array.matrix = (depths, initial) =>
+{
+  if(!depths.length) return `"depths" must be an array of integers.`
+
+  const builder = (length, index) =>
+  {
+    if(index === depths.length - 1) return dunp.array.new(length, initial)
+
+    return dunp.array.new(length).map(() => builder(depths[index + 1], index + 1))
+  }
+
+  return builder(depths[0], 0)
+}
 
 //......................................................................................................................
 
