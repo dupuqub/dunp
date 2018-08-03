@@ -13,7 +13,7 @@ const dunp = {}
 //......................................................................................................................
 
 dunp.array = {}
-dunp.array.new = length => Array.from({length})
+dunp.array.new = (length, initial) => Array.from({length}).map(() => initial)
 dunp.array.valid = array => dunp.typeOf(array) === `array` && array.length > 0
 dunp.array.styler = array => `${array[0]}: ${array[1]}`
 dunp.array.attributer = array => ` ${array[0]}="${array[1]}"`
