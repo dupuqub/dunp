@@ -17,6 +17,7 @@ dunp.array.new = (length, initial) => Array.from({length}).map(() => initial)
 dunp.array.valid = array => dunp.typeOf(array) === `array` && array.length > 0
 dunp.array.styler = array => `${array[0]}: ${array[1]}`
 dunp.array.attributer = array => ` ${array[0]}="${array[1]}"`
+dunp.array.typeOf = array => array.map(dunp.typeOf).reduce((a, b) => a === b ? a : undefined, dunp.typeOf(array[0]))
 dunp.array.matrix = (depths, initial) =>
 {
   if(!depths.length) return `"depths" must be an array of integers.`
@@ -62,8 +63,10 @@ dunp.title = string =>
 
 dunp.typeOf = item =>
 (
-    isNaN(item) && typeof item === `number`
-  ? `NaN`
+    String(item.constructor).indexOf(`RegExp`) !== -1
+  ? `regexp`
+  : isNaN(item) && typeof item === `number`
+  ? `nan`
   : Array.isArray(item)
   ? `array`
   : item === null
@@ -112,7 +115,7 @@ dunp.aspectRatio = (options, space) =>
   const u = !options.ratio ? 1 : (w + h) / 3000
   const type = w > h ? `landscape` : w < h ? `portrait` : `square`
 
-  // UNIT = (WIDTH + HEIGHT) / 3000
+  // UNIT = (WIDTH + HEIGHT) / 3000.
   // This is because the focus here is a 1080p screen(1920px by 1080px).
   // In such a screen the value of a unit would be 1 because 1920 + 1080 = 3000.
 
