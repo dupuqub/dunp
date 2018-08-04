@@ -29,7 +29,13 @@ dunp.array.matrix = (depths, initial) =>
     return dunp.array.new(length).map(() => builder(depths[index + 1], index + 1))
   }
 
-  return builder(depths[0], 0)
+  const matrix =
+  {
+    depth: depths.length,
+    body: builder(depths[0], 0),
+  }
+
+  return matrix
 }
 
 //......................................................................................................................
