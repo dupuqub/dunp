@@ -63,7 +63,7 @@ dunp.title = string =>
 
 dunp.typeOf = item =>
 (
-    String(item.constructor).indexOf(`RegExp`) !== -1
+    item.constructor && String(item.constructor).indexOf(`RegExp`) !== -1
   ? `regexp`
   : isNaN(item) && typeof item === `number`
   ? `nan`
