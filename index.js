@@ -18,6 +18,7 @@ dunp.array.valid = array => dunp.typeOf(array) === `array` && array.length > 0
 dunp.array.styler = array => `${array[0]}: ${array[1]}`
 dunp.array.attributer = array => ` ${array[0]}="${array[1]}"`
 dunp.array.typeOf = array => array.map(dunp.typeOf).reduce((a, b) => a === b ? a : undefined, dunp.typeOf(array[0]))
+
 //......................................................................................................................
 
 dunp.matrix = {}
