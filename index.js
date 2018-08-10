@@ -24,7 +24,11 @@ dunp.array.typeOf = array => array.map(dunp.typeOf).reduce((a, b) => a === b ? a
 dunp.matrix = {}
 dunp.matrix.new = (depths, initial) =>
 {
-  if(!depths.length) return `"depths" must be an array of integers.`
+  if(dunp.typeOf(depths) !== `array`
+  || dunp.array.typeOf(depths) !== `number`)
+  {
+    return `"depths" must be an array of integers.`
+  }
 
   const builder = (length, index) =>
   {
