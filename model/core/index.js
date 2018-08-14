@@ -9,7 +9,7 @@ onresize = unused => dunp.changeScene (project.states.temp.scene.id)
 
 project.begin = () =>
 {
-  dunp.get(`title`).innerHTML = dunp.getLang().main.title
+  dunp.get(`title`).innerHTML = dunp.getLang().title
   dunp.changeScene (`main`)
 }
 
