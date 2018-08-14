@@ -6,10 +6,10 @@
 project.langs.english =
 {
   id: `english`,
+  name: `English`,
+  title: `MODEL`,
   main:
   {
-    lang: `ENGLISH`,
-    title: `MODEL`,
     play: `PLAY`,
     adjust: `ADJUST`,
   },
