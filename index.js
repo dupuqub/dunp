@@ -55,6 +55,11 @@ dunp.getBounds = query => dunp.get(query).getBoundingClientRect()
 dunp.requestFrame = funktion => window.requestAnimationFrame(funktion)
 
 //......................................................................................................................
+// PROJECTUAL
+
+dunp.getLang = () => project.langs[project.states.safe.lang]
+
+//......................................................................................................................
 
 dunp.lower = string => string.toLowerCase()
 dunp.upper = string => string.toUpperCase()
@@ -130,7 +135,7 @@ dunp.aspectRatio = (options, space) =>
 }
 
 //......................................................................................................................
-// MODIFIER PROJECTUAL
+// PROJECTUAL MODIFIER
 
 dunp.reroot = stage =>
 {
@@ -155,18 +160,7 @@ dunp.reroot = stage =>
 }
 
 //......................................................................................................................
-// PROJECTUAL
-
-dunp.getLang = () =>
-{
-  const langId = project.states.safe.lang
-  const lang = project.langs[langId]
-
-  return lang
-}
-
-//......................................................................................................................
-// MODIFIER PROJECTUAL
+// PROJECTUAL MODIFIER
 
 dunp.changeScene = (id, saveScene, saveStage) =>
 {
@@ -212,16 +206,18 @@ dunp.changeScene = (id, saveScene, saveStage) =>
 dunp.alphabets =
 [
   {
-    id: `nuhAlin`,
-    vowels: `ieéaáoóu`,
-    consonants: `bpdtgkfvszxjhylrnm`,
-    complete: `ieéaáoóubpdtgkfvszxjhylrnm`,
-  },
-  {
     id: `english`,
+    name: `English`,
     vowels: `aeiou`,
     consonants: `bcdfghjklmnpqrstvwxyz`,
     complete: `abcdefghijklmnopqrstuvwxyz`,
+  },
+  {
+    id: `nuhalin`,
+    name: `nuhAlin`,
+    vowels: `ieéaáoóu`,
+    consonants: `bpdtgkfvszxjhylrnm`,
+    complete: `ieéaáoóubpdtgkfvszxjhylrnm`,
   },
 ]
 
