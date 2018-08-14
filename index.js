@@ -25,10 +25,7 @@ dunp.matrix = {}
 dunp.matrix.new = (depths, initial) =>
 {
   if(dunp.typeOf(depths) !== `array`
-  || dunp.array.typeOf(depths) !== `number`)
-  {
-    return `"depths" must be an array of integers.`
-  }
+  || dunp.array.typeOf(depths) !== `number`) return `"depths" must be an array of integers.`
 
   const builder = (length, index) =>
   {
@@ -173,7 +170,7 @@ dunp.getLang = () =>
 
 dunp.changeScene = (id, saveScene, saveStage) =>
 {
-  // set actors
+  // Set actors.
   const {get, getBounds, aspectRatio, reroot, htmlify} = dunp
   const {scenes, bricks, states} = project
   const oldScene = states.temp.scene
@@ -184,7 +181,7 @@ dunp.changeScene = (id, saveScene, saveStage) =>
   if(oldScene.exit) oldScene.exit()
   newScene.beforeBuild()
 
-  // set actors
+  // Set actors.
   const {stageOptions} = newScene
   const bodySize = getBounds(`body`)
   const space = {w: bodySize.width, h: bodySize.height}
