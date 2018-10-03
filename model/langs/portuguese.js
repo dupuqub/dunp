@@ -9,9 +9,9 @@ project.langs.portuguese =
   name: `Português`,
   title: `MODELO`,
   main:
-  {
-    play: `JOGAR`,
-    adjust: `AJUSTAR`,
-  },
+  [
+    `JOGAR`,
+    `AJUSTAR`,
+  ],
 }
 

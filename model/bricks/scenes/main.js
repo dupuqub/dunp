@@ -20,8 +20,8 @@ project.bricks.scenes.main = () =>
     inner:
     [
       project.bricks.mainTitle(lang.title),
-      project.bricks.mainButton(lang.main.play, `Play`, `log(\`play clicked\`)`),
-      project.bricks.mainButton(lang.main.adjust, `Adjust`, `log(\`adjust clicked\`)`),
+      project.bricks.mainButton(lang.main[0], `Play`, `console.log(\`play clicked\`)`),
+      project.bricks.mainButton(lang.main[1], `Adjust`, `console.log(\`adjust clicked\`)`),
       project.bricks.mainLang(dunp.upper(lang.name)),
     ],
   }
