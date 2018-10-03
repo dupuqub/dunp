@@ -3,6 +3,12 @@
 
 //......................................................................................................................
 
+// A funtion may be MODEL, it means it is only useful if you're using the dunp model.
+// A function may be MUTANT, it means it changes something in the state and/or HTML document.
+// A function may be both MODEL and MUTANT.
+
+//......................................................................................................................
+
 const dunp = {}
 
 //......................................................................................................................
@@ -50,7 +56,7 @@ dunp.getBounds = query => dunp.get(query).getBoundingClientRect()
 dunp.requestFrame = funktion => window.requestAnimationFrame(funktion)
 
 //......................................................................................................................
-// PROJECTUAL
+// MODEL
 
 dunp.getLang = () => project.langs[project.states.safe.lang]
 
@@ -123,14 +129,14 @@ dunp.aspectRatio = (options, space) =>
   const type = w > h ? `landscape` : w < h ? `portrait` : `square`
 
   // UNIT = (WIDTH + HEIGHT) / 3000.
-  // This is because the focus here is a 1080p screen(1920px by 1080px).
+  // This is because the focus here is a 1080p screen (1920px by 1080px).
   // In such a screen the value of a unit would be 1 because 1920 + 1080 = 3000.
 
   return {w, h, u, type}
 }
 
 //......................................................................................................................
-// PROJECTUAL MODIFIER
+// MODEL MUTANT
 
 dunp.reroot = stage =>
 {
@@ -155,7 +161,7 @@ dunp.reroot = stage =>
 }
 
 //......................................................................................................................
-// PROJECTUAL MODIFIER
+// MODEL MUTANT
 
 dunp.changeScene = (id, saveScene, saveStage) =>
 {
