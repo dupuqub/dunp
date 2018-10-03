@@ -7,7 +7,7 @@
 project.bricks.mainLang = inner =>
 ({
   id: `mainLang`,
-  classes: [`center`, `pointer`, `mainButton`],
+  classes: [`center`, `pointer`, `button`],
   extras:
   [
     [

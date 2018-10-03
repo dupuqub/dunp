@@ -7,7 +7,7 @@
 project.bricks.mainButton = (inner, id, funktion) =>
 ({
   id: `button${id}`,
-  classes: [`center`, `pointer`, `mainButton`],
+  classes: [`center`, `pointer`, `button`],
   extras: [[`onclick`, funktion]],
   style:
   [

@@ -2,13 +2,13 @@
 /*....................................................................................................................*/
 /* Examples. */
 
-.mainButton 
+.button
 {
   color: #CCC;
   background: #666;
 }
 
-.mainButton:hover
+.button:hover
 {
   color: #EEE;
   background: #888;

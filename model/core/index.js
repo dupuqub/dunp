@@ -3,26 +3,26 @@
 
 //......................................................................................................................
 
-onresize = unused => dunp.changeScene (project.states.temp.scene.id)
+onresize = unused => dunp.changeScene(project.states.temp.scene.id)
 
 //......................................................................................................................
 
 project.begin = () =>
 {
   dunp.get(`title`).innerHTML = dunp.getLang().title
-  dunp.changeScene (`main`)
+  dunp.changeScene(`main`)
 }
 
 //......................................................................................................................
 
 project.loop = () =>
 {
-  project.states.temp.scene.loop ()
-  dunp.requestFrame (project.loop)
+  project.states.temp.scene.loop()
+  dunp.requestFrame(project.loop)
 }
 
 //......................................................................................................................
 
-project.begin ()
-project.loop ()
+project.begin()
+project.loop()
 
