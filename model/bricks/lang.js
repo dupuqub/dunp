@@ -4,7 +4,7 @@
 //......................................................................................................................
 // Example.
 
-project.bricks.mainLang = inner =>
+project.bricks.lang = inner =>
 ({
   id: `mainLang`,
   classes: [`center`, `pointer`, `button`],

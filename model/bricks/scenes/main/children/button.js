@@ -4,7 +4,7 @@
 //......................................................................................................................
 // Example.
 
-project.bricks.mainButton = (inner, id, funktion) =>
+project.bricks.scenes.main.children.button = (inner, id, funktion) =>
 ({
   id: `button${id}`,
   classes: [`center`, `pointer`, `button`],

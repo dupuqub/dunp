@@ -7,10 +7,13 @@ const project =
 {
   bricks:
   {
-    scenes: {},
+    scenes:
+    {
+      main: {children: {}},
+      adjust: {children: {}},
+    },
   },
   langs: {},
   states: {},
-  scenes: {},
 }
 

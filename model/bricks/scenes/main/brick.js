@@ -4,7 +4,7 @@
 //......................................................................................................................
 // Example.
 
-project.bricks.scenes.main = () =>
+project.bricks.scenes.main.brick = () =>
 {
   const lang = dunp.getLang()
   const brick =
@@ -19,10 +19,10 @@ project.bricks.scenes.main = () =>
     ],
     inner:
     [
-      project.bricks.mainTitle(lang.title),
-      project.bricks.mainButton(lang.main[0], `Play`, `console.log(\`play clicked\`)`),
-      project.bricks.mainButton(lang.main[1], `Adjust`, `console.log(\`adjust clicked\`)`),
-      project.bricks.mainLang(dunp.upper(lang.name)),
+      project.bricks.scenes.main.children.title(lang.title),
+      project.bricks.scenes.main.children.button(lang.main[0], `Play`, `console.log(\`play clicked\`)`),
+      project.bricks.scenes.main.children.button(lang.main[1], `Adjust`, `console.log(\`adjust clicked\`)`),
+      project.bricks.scenes.main.children.lang(dunp.upper(lang.name)),
     ],
   }
 

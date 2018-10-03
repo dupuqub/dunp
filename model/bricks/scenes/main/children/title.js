@@ -4,7 +4,7 @@
 //......................................................................................................................
 // Example.
 
-project.bricks.mainTitle = inner =>
+project.bricks.scenes.main.children.title = inner =>
 ({
   id: `mainTitle`,
   classes: [`center`],

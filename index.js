@@ -167,9 +167,9 @@ dunp.changeScene = (id, saveScene, saveStage) =>
 {
   // Set actors.
   const {get, getBounds, aspectRatio, reroot, htmlify} = dunp
-  const {scenes, bricks, states} = project
+  const {bricks, states} = project
   const oldScene = states.temp.scene
-  const newScene = scenes[id]()
+  const newScene = bricks.scenes[id].meta()
 
   // Make necessary transitions.
   newScene.beforeOldExit()
