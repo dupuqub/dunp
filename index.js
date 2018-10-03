@@ -182,7 +182,7 @@ dunp.changeScene = (id, saveScene, saveStage) =>
   const space = {w: bodySize.width, h: bodySize.height}
   const newStageInfo = aspectRatio(stageOptions, space)
   const stage = get(`#stage`)
-  const brick = bricks.scenes[id]()
+  const brick = bricks.scenes[id].brick()
   const text = htmlify(brick)
 
   // Store values.
