@@ -22,7 +22,7 @@ project.bricks.scenes.main.brick = () =>
       project.bricks.scenes.main.children.title(lang.title),
       project.bricks.scenes.main.children.button(lang.main[0], `Play`, `console.log(\`play clicked\`)`),
       project.bricks.scenes.main.children.button(lang.main[1], `Adjust`, `console.log(\`adjust clicked\`)`),
-      project.bricks.scenes.main.children.lang(dunp.upper(lang.name)),
+      project.bricks.lang(dunp.upper(lang.name)),
     ],
   }
 
