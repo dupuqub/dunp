@@ -8,7 +8,7 @@ project.bricks.scenes.main.meta = () =>
 ({
   //....................................................................................................................
 
-  id: `scene`,
+  id: `main`,
   stageOptions:
   {
     // "ratio === true" means "w" and "h" will be proportional to the whole screen.

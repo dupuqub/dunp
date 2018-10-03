@@ -10,7 +10,6 @@ const project =
     scenes:
     {
       main: {children: {}},
-      adjust: {children: {}},
     },
   },
   langs: {},
