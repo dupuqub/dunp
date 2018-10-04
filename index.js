@@ -54,6 +54,7 @@ dunp.get = query => document.querySelector(query)
 dunp.getAll = query => document.querySelectorAll(query)
 dunp.getBounds = query => dunp.get(query).getBoundingClientRect()
 dunp.requestFrame = funktion => window.requestAnimationFrame(funktion)
+dunp.trigger = funktion => `(${funktion.toString()})()`
 
 //......................................................................................................................
 // MODEL
