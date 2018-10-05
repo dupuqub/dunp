@@ -99,7 +99,7 @@ dunp.htmlify = brick =>
   if(typeOf(brick) === `array`) return !valid(brick) ? `` : brick.map(htmlify).reduce(sum)
   if(typeOf(brick) !== `object`) return brick
 
-  const type = brick.type || `div`
+  const tag = brick.tag || `div`
   const id = !brick.id ? `` : ` id="${brick.id}"`
   const classes = !valid(brick.classes) ? `` : ` class="${brick.classes.reduce(concat(` `))}"`
   const extras = !valid(brick.extras) ? `` : brick.extras.map(attributer).reduce(sum)
@@ -114,7 +114,7 @@ dunp.htmlify = brick =>
     ? brick.inner
     : ``
 
-  return `<${type + id + classes + extras + style}>${inner}</${type}>`
+  return `<${tag + id + classes + extras + style}>${inner}</${tag}>`
 }
 
 //......................................................................................................................
