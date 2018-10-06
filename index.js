@@ -103,7 +103,7 @@ dunp.htmlify = brick =>
   const id = !brick.id ? `` : ` id="${brick.id}"`
   const classes = !valid(brick.classes) ? `` : ` class="${brick.classes.reduce(concat(` `))}"`
   const extras = !valid(brick.extras) ? `` : brick.extras.map(attributer).reduce(sum)
-  const style = !valid(brick.style) ? `` : ` style="${brick.style.map(styler).reduce(concat(`; `))}"`
+  const styles = !valid(brick.styles) ? `` : ` style="${brick.styles.map(styler).reduce(concat(`; `))}"`
   const inner =
 
       valid(brick.inner)
@@ -114,7 +114,7 @@ dunp.htmlify = brick =>
     ? brick.inner
     : ``
 
-  return `<${tag + id + classes + extras + style}>${inner}</${tag}>`
+  return `<${tag + id + classes + extras + styles}>${inner}</${tag}>`
 }
 
 //......................................................................................................................

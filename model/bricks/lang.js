@@ -30,7 +30,7 @@ project.bricks.lang = inner =>
     id: `mainLang`,
     classes: [`center`, `pointer`, `button`],
     extras: [[`onclick`, dunp.trigger(click)]],
-    style:
+    styles:
     [
       [`width`, `100%`],
       [`height`, `calc(var(--u) * 50)`],

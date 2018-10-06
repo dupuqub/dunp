@@ -9,7 +9,7 @@ project.bricks.scenes.main.children.button = (inner, id, funktion) =>
   id: `button${id}`,
   classes: [`center`, `pointer`, `button`],
   extras: [[`onclick`, funktion]],
-  style:
+  styles:
   [
     [`width`, `13%`],
     [`height`, `7%`],

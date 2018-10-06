@@ -25,7 +25,7 @@ project.bricks.model = () =>
     [`onclick`, `console.log(\`clicked\`)`],
     [`onmouseover`, `console.log(\`hovered\`)`],
   ],
-  style:
+  styles:
   [
     [`border`, `calc(var(--u) * 3) solid #FFF`],
     [`background`, `#AAA`],

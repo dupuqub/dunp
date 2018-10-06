@@ -8,7 +8,7 @@ project.bricks.scenes.main.children.title = inner =>
 ({
   id: `mainTitle`,
   classes: [`center`],
-  style:
+  styles:
   [
     [`color`, `#BBB`],
     [`font-size`, `calc(var(--u) * 150)`],
