@@ -108,6 +108,8 @@ dunp.htmlify = brick =>
 
       valid(brick.inner)
     ? brick.inner.map(htmlify).reduce(sum)
+    : typeOf(brick.inner) === `function`
+    ? htmlify(brick.inner())
     : typeOf(brick.inner) === `object`
     ? htmlify(brick.inner)
     : brick.inner
