@@ -47,7 +47,7 @@ dunp.combo = (a, b) => a && b
 dunp.concat = link => (a, b) => a + link + b
 dunp.random = (min, max) => Math.random() * (max - min) + min
 dunp.roll = (min, max) => Math.floor(dunp.random(min, max + 1))
-dunp.play = a => a()
+dunp.run = a => a()
 
 //......................................................................................................................
 
