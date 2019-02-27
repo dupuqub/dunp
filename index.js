@@ -19,6 +19,22 @@ dunp.array.valid = array => dunp.typeOf(array) === `array` && array.length > 0
 dunp.array.styler = array => `${array[0]}: ${array[1]}`
 dunp.array.attributer = array => ` ${array[0]}="${array[1]}"`
 dunp.array.typeOf = array => array.map(dunp.typeOf).reduce((a, b) => a === b ? a : undefined, dunp.typeOf(array[0]))
+dunp.array.shuffle = array =>
+{
+  let indexNow = array.length
+
+  while(0 !== indexNow)
+  {
+    indexRandom = Math.floor(Math.random() * indexNow)
+    indexNow -= 1
+
+    temporaryValue = array[indexNow]
+    array[indexNow] = array[indexRandom]
+    array[indexRandom] = temporaryValue
+  }
+
+  return array
+}
 
 //......................................................................................................................
 
