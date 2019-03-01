@@ -2,7 +2,6 @@
 `use strict`
 
 //......................................................................................................................
-
 // A funtion may be MODEL, it means it is only useful if you're using the dunp model.
 // A function may be MUTANT, it means it changes something in the state and/or HTML document.
 // A function may be both MODEL and MUTANT.
@@ -71,8 +70,18 @@ dunp.get = query => document.querySelector(query)
 dunp.getAll = query => document.querySelectorAll(query)
 dunp.getBounds = query => dunp.get(query).getBoundingClientRect()
 dunp.requestFrame = funktion => window.requestAnimationFrame(funktion)
-dunp.trigger = funktion => `(${funktion.toString()})()`
 dunp.space = amount => dunp.array.new(amount, `&nbsp`).reduce(dunp.sum)
+
+//......................................................................................................................
+// Funtion.toString() has an issue with having double quotes anywhere in the function.
+// The `"` (double quotes) symbol can't even be written in commentaries.
+// It will therefore be represented in strings by 2 single quotes as in `''`.
+// It also doesn't work putting an inverted bar before it as in `\"`.
+// This is a browser (v8 engine) issue, not mine (dunp engine).
+// The code line below would also work as a double quotes replacement.
+// String.fromCharCode(34)
+
+dunp.trigger = funktion => `(${funktion.toString()})()`
 
 //......................................................................................................................
 // MODEL
